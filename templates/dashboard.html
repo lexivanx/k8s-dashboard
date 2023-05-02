@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kubernetes Security Dashboard</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  <h1>Kubernetes Security Dashboard</h1>
+  <h2>Cluster Information</h2>
+  <ul>
+    <li>Cluster Name: {{ cluster_info.cluster_name }}</li>
+    <li>Number of Nodes: {{ cluster_info.nodes }}</li>
+    <li>Number of Namespaces: {{ cluster_info.namespaces }}</li>
+  </ul>
+  <h2>Compliance Report</h2>
+  <div>{{ compliance_report.summary }}</div>
+  <a href="/report">View Full Report</a>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
