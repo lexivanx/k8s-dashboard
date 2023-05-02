@@ -1,0 +1,31 @@
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc.orig
+
+# Flask
+instance/
+.flaskenv
+
+# Configuration files
+config/local.yaml
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment
+.env
+.venv/
+pyvenv.cfg
+.envrc
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp

@@ -1,0 +1,12 @@
+flask
+kubernetes
+requests
+pyyaml
+kube-bench
+kube-psp-advisor
+slackclient
+slack-bolt
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
