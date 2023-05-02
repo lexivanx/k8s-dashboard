@@ -1,0 +1,24 @@
+kubernetes:
+  api_endpoint: https://example.com:6443
+  token: your-token-here
+  ca_cert: path/to/ca_cert
+
+container_scanner:
+  tool: trivy
+  config: path/to/config.yaml
+
+email:
+  sender: your-email@example.com
+  recipients:
+    - recipient1@example.com
+    - recipient2@example.com
+  subject: Compliance Alert
+  smtp_server: smtp.gmail.com
+  smtp_port: 587
+  username: your-email@example.com
+  password: your-email-password
+
+slack:
+  bot_token: xoxb-1234567890-0987654321-abcdefghijkl
+  channel: "#compliance-alerts"
+  alert_message: Compliance Alert
