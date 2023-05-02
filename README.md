@@ -32,10 +32,11 @@ A Kubernetes Security Dashboard that provides a comprehensive overview of the se
 
 3. Create a virtual environment and activate it:
 
-```python3 -m venv venv
+```
+python3 -m venv venv
 source venv/bin/activate # Linux/macOS
-venv\Scripts\activate # Windows```
-
+venv\Scripts\activate # Windows
+```
 
 4. Install the required packages:
 
@@ -47,12 +48,8 @@ venv\Scripts\activate # Windows```
 
 ```python app/main.py```
 
-7. Open a web browser and navigate to http://localhost:5000 to view the dashboard.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+7. Open a web browser and navigate to `http://localhost:5000` to view the dashboard.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
