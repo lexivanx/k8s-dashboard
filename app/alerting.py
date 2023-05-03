@@ -1,12 +1,25 @@
 import smtplib
 import yaml
+import logging, os
 from email.mime.text import MIMEText
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 def load_config():
-    with open("config/default.yaml", "r") as f:
-        return yaml.safe_load(f)
+    try:
+        with open("config/default.yaml", "r") as f:
+            content = f.read()
+            content = os.path.expandvars(content)  # Replace placeholders with environment variables
+            return yaml.safe_load(content)
+    except FileNotFoundError:
+        logger.error("Configuration file not found.")
+        raise
+    except yaml.YAMLError as e:
+        logger.error(f"Error parsing configuration file: {e}")
+        raise
 
 def send_email(subject, body):
     config = load_config()
@@ -24,9 +37,9 @@ def send_email(subject, body):
         server.login(email_config["username"], email_config["password"])
         server.sendmail(email_config["sender"], email_config["recipients"], msg.as_string())
         server.quit()
-        print("Email sent successfully")
+        logger.info("Email sent successfully")
     except Exception as e:
-        print(f"Failed to send email: {e}")
+        logger.error(f"Failed to send email: {e}")
 
 def send_slack_message(text):
     config = load_config()
@@ -39,9 +52,9 @@ def send_slack_message(text):
             channel=slack_config["channel"],
             text=text
         )
-        print("Slack message sent successfully")
+        logger.info("Slack message sent successfully")
     except SlackApiError as e:
-        print(f"Failed to send Slack message: {e}")
+        logger.error(f"Failed to send Slack message: {e}")
 
 def send_alerts(compliance_report):
     summary = compliance_report["summary"]
