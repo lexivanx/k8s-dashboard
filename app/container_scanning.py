@@ -5,8 +5,13 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+def read_images_from_file(filename):
+    with open(filename, "r") as file:
+        images = [line.strip() for line in file.readlines()]
+    return images
+
 def scan_images():
-    images = ["your-image-name:your-image-tag"]
+    images = read_images_from_file("images.txt")
     if not images:
         logger.error("No images found to scan.")
         return []

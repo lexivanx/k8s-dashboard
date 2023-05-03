@@ -1,0 +1,2 @@
+image-name-one:image-tag-one
+image-name-two:image-tag-two
