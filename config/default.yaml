@@ -15,8 +15,9 @@ email:
   subject: Compliance Alert
   smtp_server: smtp.gmail.com
   smtp_port: 587
-  username: your-email@example.com
-  password: your-email-password
+  email:
+  username: ${EMAIL_USERNAME}
+  password: ${EMAIL_PASSWORD}
 
 slack:
   bot_token: xoxb-1234567890-0987654321-abcdefghijkl
