@@ -1,3 +1,5 @@
+from jinja2 import Environment, FileSystemLoader
+
 def generate_report(cis_results, psp_violations, network_policies, image_scan_results, runtime_security_events):
     # Combine the input data into a compliance report dictionary
     compliance_report = {
@@ -10,4 +12,15 @@ def generate_report(cis_results, psp_violations, network_policies, image_scan_re
             'runtime_security_events': runtime_security_events
         }
     }
-    return compliance_report
+
+    # Set up Jinja2 environment and load the template
+    env = Environment(loader=FileSystemLoader('templates'))
+    template = env.get_template('compliance_report.txt')
+
+    # Render the template with the compliance report data
+    rendered_report = template.render(
+        summary=compliance_report['summary'],
+        details=compliance_report['details']
+    )
+
+    return rendered_report

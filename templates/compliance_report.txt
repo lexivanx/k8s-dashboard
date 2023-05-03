@@ -1,0 +1,8 @@
+Compliance Report
+-----------------
+Summary: {{ summary }}
+
+Details:
+{% for detail in details %}
+  - {{ detail }}
+{% endfor %}
