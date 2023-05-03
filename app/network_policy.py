@@ -1,5 +1,12 @@
 from kubernetes import client, config
+from flask_caching import Cache
 
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+
+def init_app(app):
+    cache.init_app(app)
+
+@cache.cached(timeout=300)
 def get_network_policies(chunk_size=50):
     config.load_kube_config()
     api_instance = client.NetworkingV1Api()

@@ -1,6 +1,7 @@
 import json
 import subprocess
 import logging
+from flask_caching import Cache
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -10,6 +11,12 @@ def read_images_from_file(filename):
         images = [line.strip() for line in file.readlines()]
     return images
 
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+
+def init_app(app):
+    cache.init_app(app)
+
+@cache.cached(timeout=300)  # Cache the result for 5 minutes (300 seconds)
 def scan_images():
     images = read_images_from_file("images.txt")
     if not images:

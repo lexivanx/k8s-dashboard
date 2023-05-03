@@ -6,6 +6,8 @@ kube-bench
 kube-psp-advisor
 slackclient
 slack-bolt
+flask-login
+flask-caching
 google-auth
 google-auth-oauthlib
 google-auth-httplib2

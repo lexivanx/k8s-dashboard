@@ -1,10 +1,17 @@
 import json
 import subprocess
 import logging
+from flask_caching import Cache
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+
+def init_app(app):
+    cache.init_app(app)
+
+@cache.cached(timeout=300)
 def run_cis_benchmark():
     cmd = "kube-bench --json"
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
